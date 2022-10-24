@@ -6,6 +6,7 @@ import {
   View,
   FlatList,
   Modal,
+  
 } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -23,6 +24,7 @@ const Notes = ({navigation, route}) => {
   const [ind, setind] = useState();
   const [del, setdel] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const deleteitem = async val => {
     let a = data;
@@ -81,7 +83,7 @@ const Notes = ({navigation, route}) => {
     setupto(item);
     setModalVisible(true);
   };
-
+//update
   const Updatebtn = async upto => {
       let newarr =[...data]
       newarr[ind]=upto;
