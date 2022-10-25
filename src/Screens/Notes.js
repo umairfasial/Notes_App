@@ -11,11 +11,11 @@ import {
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import {ThemeProvider} from '@react-navigation/native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Theme from '../utils/Themes';
 import {useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const Notes = ({navigation, route}) => {
   // const {itom} = route.params;
@@ -24,16 +24,39 @@ const Notes = ({navigation, route}) => {
   const [ind, setind] = useState();
   const [del, setdel] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
-  const [visible, setVisible] = useState(false);
 
   const deleteitem = async val => {
+  
     let a = data;
     let arr = a.filter(item => {
-      return item !== val;
+      return item !== val
     });
-    console.log('del',arr)
+    const value = await AsyncStorage.getItem('delete');
+    const obj = JSON.parse(value);
+
+    if(obj?.length){
+// console.log('if')
+    
+     let array = [...obj]     
+        
+        array.unshift(val);
+        const info= JSON.stringify(array)
+
+        await AsyncStorage.setItem('delete',info );
+        // console.log('info',info)
+    }else{
+        let arr =[];
+        arr.unshift(val);
+        // console.log('else',arr)
+        await AsyncStorage.setItem('delete', JSON.stringify(arr));
+    }
+      // console.log('hlo',del)
+      // await AsyncStorage.setItem('delete', JSON.stringify(val));
+ 
+
     setdata(arr);
     await AsyncStorage.setItem('notes', JSON.stringify(arr));
+   
   };
 
   const render = ({item,index}) => {
@@ -119,7 +142,7 @@ const Notes = ({navigation, route}) => {
         <Text style={{fontSize: 25, fontWeight: 'bold', color: Theme.Orange}}>
           Notes
         </Text>
-        <Entypo name="dots-three-vertical" size={25} color={Theme.Orange} />
+        <FontAwesome onPress={() => navigation.navigate('Recentdelscr')} name="history" size={25} color={Theme.Orange} />
       </View>
       <View style={styles.vew}>
         <Icon name="search" size={25} color={Theme.Black} />
@@ -219,6 +242,7 @@ const Notes = ({navigation, route}) => {
           </View>
         </View>
       </Modal>
+    
     </View>
   );
 };
