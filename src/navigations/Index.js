@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Notes from '../Screens/Notes';
 import Addnote from '../Screens/Addnote';
 import Recentdelscr from '../Screens/Recentdelscr';
+import Login from '../Screens/Login';
+import Practice from '../Screens/Practice';
 
 
 const Stack = createNativeStackNavigator();
@@ -12,7 +14,9 @@ const Stack = createNativeStackNavigator();
 const Index = () => {
   return (
     <NavigationContainer>
-    <Stack.Navigator initialRouteName='Notes'  screenOptions={{headerShown:false}}>
+    <Stack.Navigator initialRouteName='Login'  screenOptions={{headerShown:false}}>
+    <Stack.Screen name="Practice" component={Practice} />
+    <Stack.Screen name="Login" component={Login} />
     <Stack.Screen name="Notes" component={Notes} />
     <Stack.Screen name="Addnote" component={Addnote} />
     <Stack.Screen name="Recentdelscr" component={Recentdelscr} />
