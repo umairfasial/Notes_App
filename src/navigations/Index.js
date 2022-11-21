@@ -7,6 +7,7 @@ import Addnote from '../Screens/Addnote';
 import Recentdelscr from '../Screens/Recentdelscr';
 import Login from '../Screens/Login';
 import Practice from '../Screens/Practice';
+import Pract1 from '../Screens/Pract1';
 
 
 const Stack = createNativeStackNavigator();
@@ -20,6 +21,7 @@ const Index = () => {
     <Stack.Screen name="Notes" component={Notes} />
     <Stack.Screen name="Addnote" component={Addnote} />
     <Stack.Screen name="Recentdelscr" component={Recentdelscr} />
+    <Stack.Screen name="Pract1" component={Pract1} />
 
 
     </Stack.Navigator>
