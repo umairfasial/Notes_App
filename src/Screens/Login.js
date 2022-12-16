@@ -7,7 +7,7 @@ import {
   Modal,
   ScrollView,
 } from 'react-native';
-import React, {useState, useRef,useEffect} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import Theme from '../utils/Themes';
 import PhoneInput from 'react-native-phone-number-input';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
@@ -29,13 +29,13 @@ const Login = ({navigation}) => {
 
   const [code, setCode] = useState('');
   const phoneInput = useRef(null);
-  
+
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   }, []);
   function onAuthStateChanged(user) {
-   console.log(user)
+    console.log(user);
   }
   const savedata = () => {
     firestore()
@@ -192,7 +192,8 @@ const Login = ({navigation}) => {
         <TouchableOpacity
           // onPress={handlemail}
           // onPress={savedata}
-          onPress={() => navigation.navigate('Practice')}
+          // onPress={() => navigation.navigate('Practice')}
+          onPress={() => navigation.navigate('Timing')}
           // onPress={() => {
           //       console.log('hloo',valid)
           //   const checkValid = phoneInput.current?.isValidNumber(value);

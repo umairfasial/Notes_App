@@ -160,7 +160,7 @@ const Notes = ({navigation, route}) => {
       </View>
       <View style={styles.vew}>
         <Icon name="search" size={25} color={Theme.Black} />
-        <TextInput style={{width: '90%'}} placeholder="Search"></TextInput>
+        <TextInput style={{width: '90%'}} placeholder="Search"  value='text' onChangeText={text=> data.filter()}></TextInput>
       </View>
       {data?.length ? (
         <FlatList
