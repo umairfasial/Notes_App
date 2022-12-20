@@ -38,19 +38,25 @@ const Login = ({navigation}) => {
     console.log(user);
   }
   const savedata = () => {
+
+    const timestamp = Date.now()
+    // console.log('first',timestamp)
+
     firestore()
-      .collection('Signup')
-      .add({
+      .collection('Signup').doc(timestamp.toString())
+      .set({
         First_name: firstname,
         Last_name: lastname,
         Email: email,
-        Phone_number: formattedValue,
+        // Phone_number: formattedValue,s
         Password: password,
+        uid:timestamp.toString(),
       })
       .then(() => {
         console.log('User added!');
       });
   };
+
 
   // if(!email){
   //   alert('Please enter your mail')
@@ -99,7 +105,7 @@ const Login = ({navigation}) => {
     } else if (!password) {
       setpaswrdError('Password is Required');
     } else {
-      signInWithPhoneNumber(formattedValue);
+      // signInWithPhoneNumber(formattedValue);
       savedata();
       authen();
     }
@@ -109,7 +115,7 @@ const Login = ({navigation}) => {
     const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
     setConfirm(confirmation);
   }
-  console.log('first', code);
+  // console.log('first', code);
   async function confirmCode() {
     try {
       await confirm.confirm(code);
@@ -180,6 +186,7 @@ const Login = ({navigation}) => {
         ) : null}
         <TextInput
           value={password}
+          // secureTextEntry
           onChangeText={text => setpassword(text)}
           style={styles.form}
           placeholder="Password"></TextInput>
@@ -192,8 +199,8 @@ const Login = ({navigation}) => {
         <TouchableOpacity
           // onPress={handlemail}
           // onPress={savedata}
-          // onPress={() => navigation.navigate('Practice')}
-          onPress={() => navigation.navigate('Timing')}
+          onPress={() => navigation.navigate('Practice')}
+          // onPress={() => navigation.navigate('Timing')}
           // onPress={() => {
           //       console.log('hloo',valid)
           //   const checkValid = phoneInput.current?.isValidNumber(value);

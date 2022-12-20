@@ -202,7 +202,6 @@ const Notes = ({navigation, route}) => {
         }}>
         <Icon name="add-circle" size={70} color={Theme.Orange} />
       </TouchableOpacity>
-
       <Modal
         animationType="fade"
         transparent={true}

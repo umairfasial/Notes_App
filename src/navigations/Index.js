@@ -10,6 +10,7 @@ import Practice from '../Screens/Practice';
 import Pract1 from '../Screens/Pract1';
 import Timing from '../Screens/Timing';
 import Calenderstrip from '../Screens/Calenderstrip';
+import Updatefirestore from '../Screens/Updatefirestore';
 
 
 const Stack = createNativeStackNavigator();
@@ -26,6 +27,7 @@ const Index = () => {
     <Stack.Screen name="Pract1" component={Pract1} />
      <Stack.Screen name="Timing" component={Timing} />
      <Stack.Screen name="Calenderstrip" component={Calenderstrip} />
+     <Stack.Screen name="Updatefirestore" component={Updatefirestore} />
 
 
     </Stack.Navigator>

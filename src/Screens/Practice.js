@@ -9,6 +9,8 @@ import {
 import React, {useState, useEffect} from 'react';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import { useSelector,useDispatch } from "react-redux";
+import { update } from '../redux/action/Actions';
 
 const Practice = ({navigation}) => {
   const [initializing, setInitializing] = useState(true);
@@ -18,6 +20,8 @@ const Practice = ({navigation}) => {
   const [emailError, setEmailError] = useState('');
   const [paswrdError, setpaswrdError] = useState('');
 
+  const dispatch=useDispatch(); 
+
   const checkdata = () => {
 
     firestore()
@@ -25,26 +29,30 @@ const Practice = ({navigation}) => {
   .where('Email', '==', email)
   .where('Password', '==', password)
   .get()
-  .then(querySnapshot => {
-    console.log('Total users: ', querySnapshot.docs);
+  .then((res) => {
 
-    
-    if (querySnapshot.docs.length > 0) {
+// console.log('resss',res)
+
+    if (res.docs.length > 0) {
       // if (
       //   querySnapshot.docs[0]._data.Email === email &&
       //   querySnapshot.docs[0]._data.Password === password
       // ) {
       //   alert('gooood')
-        navigation.navigate('Notes')
+        navigation.navigate('Updatefirestore')
       // }else{
       //   alert('wrong')
       // }
     } else {
       console.log('no account found');
     }
-    querySnapshot.forEach(documentSnapshot => {
+    res.forEach(documentSnapshot => {
       console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
-    });
+      // console.log('fiddfft',documentSnapshot)
+     let data= documentSnapshot.data()
+    //  console.log('data',data)
+         dispatch(update(data))
+    })
   });
     // firestore()
     //   .collection('Signup')
@@ -76,14 +84,14 @@ const Practice = ({navigation}) => {
     console.log(initializing);
   }
 
-  const update = async () => {
-    const data = {
-      displayName: 'Alias',
-      photoURL: 'https://my-cdn.com/assets/user/123.png',
-    };
+  // const update = async () => {
+  //   const data = {
+  //     displayName: 'Alias',
+  //     photoURL: 'https://my-cdn.com/assets/user/123.png',
+  //   };
 
-    await auth().currentUser.updateProfile(data);
-  };
+  //   await auth().currentUser.updateProfile(data);
+  // };
 
   const loginfun = () => {
     setEmailError('');

@@ -1,10 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Index from './src/navigations/Index'
+import { store } from './src/Screens/Store'
+import { Provider } from 'react-redux'
 
 const App = () => {
   return (
-   <Index/>
+    <Provider store={store}>
+    <Index/>
+    </Provider>
   )
 }
 
