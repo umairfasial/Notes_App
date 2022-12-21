@@ -199,7 +199,7 @@ const Login = ({navigation}) => {
         <TouchableOpacity
           // onPress={handlemail}
           // onPress={savedata}
-          onPress={() => navigation.navigate('Practice')}
+          onPress={() => navigation.navigate('Signup')}
           // onPress={() => navigation.navigate('Timing')}
           // onPress={() => {
           //       console.log('hloo',valid)
