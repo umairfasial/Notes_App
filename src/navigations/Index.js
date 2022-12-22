@@ -12,6 +12,7 @@ import Timing from '../Screens/Timing';
 import Calenderstrip from '../Screens/Calenderstrip';
 import Updatefirestore from '../Screens/Updatefirestore';
 import Signup from '../Screens/Signup';
+import GetApi from '../Screens/GetApi';
 
 
 const Stack = createNativeStackNavigator();
@@ -30,6 +31,7 @@ const Index = () => {
      <Stack.Screen name="Calenderstrip" component={Calenderstrip} />
      <Stack.Screen name="Updatefirestore" component={Updatefirestore} />
      <Stack.Screen name="Signup" component={Signup} />
+     <Stack.Screen name="GetApi" component={GetApi} />
 
 
     </Stack.Navigator>

@@ -11,21 +11,17 @@ import {
 } from 'react-native';
 import React from 'react';
 import axios from 'axios';
-const Signup = () => {
+const Signup = ({navigation}) => {
   // const axios = require('axios');
   const [loading, setLoading] = useState(false);
   const [upto, setupto] = useState();
   
   const savedata = () => {
       setLoading(true);
-    var data = {
-      name: 'umair@gmail.com',
-      file: '123456',
-        file_path: '123456',
-    };
+    var data = '';
     var config = {
-      method: 'post',
-      url: 'https://unbox.thefirstsol.com/api/v1/category/add',
+      method: 'get',
+      url: 'https://unbox.thefirstsol.com/api/v1/category/get',
       headers: {
         Authorization:
           'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMSwiZm5hbWUiOiJNdWhhbW1hZCIsImxuYW1lIjoidW1haXIiLCJlbWFpbCI6InVtYWlyQGdtYWlsLmNvbSIsIm5vX29mX2NoaWxkcmVuIjo1LCJkb2IiOiIxMi8wOS8yMDA4IiwiZ3JvY2VyeV9kYXlzIjoiW2BNb25kYXlgLCdGcmlkYXknXSIsInBhc3N3b3JkIjoiJDJhJDEyJEF2aGxMU21xVTlvQ3NrYjhyRkJ2T09RQzR0LmxFMy5JOWNXVy90eDdMbmRmTmNHeFF0cDZhIiwiYWxlcmdpZXMiOiIiLCJjYXRlZ29yaWVzIjoiIiwibXV0ZV9jYXRlZ29yaWVzIjoiIiwiaW1hZ2UiOiIiLCJyb2xlIjoiVXNlciIsImlzX2Jsb2NrZWQiOjAsImNyZWF0ZWRBdCI6IjIwMjItMTItMjBUMDg6MjM6MTcuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMjBUMDg6MjM6MTcuMDAwWiIsImlhdCI6MTY3MTUzOTE5M30.-m-5KROD98f2Kw5XIXRFdtmDKiR8x9OuuONijZQcrQ4',
@@ -116,7 +112,7 @@ const Signup = () => {
         </TextInput>
 
         <TouchableOpacity
-          onPress={savedata}
+          onPress={()=>navigation.navigate('GetApi')}
           style={{
             backgroundColor: '#FFCB2C',
             padding: 10,

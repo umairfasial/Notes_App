@@ -41,8 +41,10 @@ const Login = ({navigation}) => {
 
     const timestamp = Date.now()
     // console.log('first',timestamp)
-
-    firestore()
+    if(!firstname || !lastname || !email || !password){
+      alert('Please Fill All fields')
+    }else{
+      firestore()
       .collection('Signup').doc(timestamp.toString())
       .set({
         First_name: firstname,
@@ -55,6 +57,9 @@ const Login = ({navigation}) => {
       .then(() => {
         console.log('User added!');
       });
+    }
+
+   
   };
 
 
