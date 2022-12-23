@@ -13,6 +13,7 @@ import Calenderstrip from '../Screens/Calenderstrip';
 import Updatefirestore from '../Screens/Updatefirestore';
 import Signup from '../Screens/Signup';
 import GetApi from '../Screens/GetApi';
+import Fcm from '../Screens/Fcm';
 
 
 const Stack = createNativeStackNavigator();
@@ -32,6 +33,7 @@ const Index = () => {
      <Stack.Screen name="Updatefirestore" component={Updatefirestore} />
      <Stack.Screen name="Signup" component={Signup} />
      <Stack.Screen name="GetApi" component={GetApi} />
+     <Stack.Screen name="Fcm" component={Fcm} />
 
 
     </Stack.Navigator>
