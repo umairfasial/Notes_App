@@ -14,6 +14,8 @@ import Updatefirestore from '../Screens/Updatefirestore';
 import Signup from '../Screens/Signup';
 import GetApi from '../Screens/GetApi';
 import Fcm from '../Screens/Fcm';
+import GoogleSignIn from '../Screens/GoogleSignIn'
+import FBLogin from '../Screens/FBLogin';
 
 
 const Stack = createNativeStackNavigator();
@@ -34,6 +36,8 @@ const Index = () => {
      <Stack.Screen name="Signup" component={Signup} />
      <Stack.Screen name="GetApi" component={GetApi} />
      <Stack.Screen name="Fcm" component={Fcm} />
+     <Stack.Screen name="GoogleSignIn" component={GoogleSignIn} />
+     <Stack.Screen name="FBLogin" component={FBLogin} />
 
 
     </Stack.Navigator>

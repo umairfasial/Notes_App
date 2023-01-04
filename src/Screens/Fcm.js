@@ -4,12 +4,27 @@ import messaging from '@react-native-firebase/messaging';
 import inAppMessaging from '@react-native-firebase/in-app-messaging';
 import { useContext } from 'react';
 import { MyContext } from './usecontext/Pracontext';
+import { firebase } from '@react-native-firebase/app';
 
 const Fcm = () => {
   const [notification, setnotification] = useState({
     title: undefined,
     body: undefined,
   });
+
+  
+const sendNotification = async () => {
+  const notification = new firebase.notifications.Notification()
+    .setNotificationId('notificationId')
+    .setTitle('My notification')
+    .setBody('My notification body')
+    .setData({
+      key1: 'value1',
+      key2: 'value2',
+    });
+
+  await firebase.notifications().displayNotification(notification);
+};
  const data =[1,2,3,4,5,6]
 
 const {first1, setfirst1, first2, setfirst2, first3, setfirst3} = useContext(MyContext);
@@ -32,6 +47,7 @@ const {first1, setfirst1, first2, setfirst2, first3, setfirst3} = useContext(MyC
   }
 
   useEffect(() => {
+    sendNotification()
     bootstrap()
     onSetup()
     getToken();
