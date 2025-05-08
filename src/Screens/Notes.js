@@ -6,7 +6,6 @@ import {
   View,
   FlatList,
   Modal,
-  
 } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -15,7 +14,6 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Theme from '../utils/Themes';
 import {useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 
 const Notes = ({navigation, route}) => {
   // const {itom} = route.params;
@@ -26,41 +24,37 @@ const Notes = ({navigation, route}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const deleteitem = async val => {
-  
     let a = data;
     let arr = a.filter(item => {
-      return item !== val
+      return item !== val;
     });
     const value = await AsyncStorage.getItem('delete');
     const obj = JSON.parse(value);
 
-    if(obj?.length){
-// console.log('if')
-    
-     let array = [...obj]     
-        
-        array.unshift(val);
-        const info= JSON.stringify(array)
+    if (obj?.length) {
+      console.log('if');
 
-        await AsyncStorage.setItem('delete',info );
-        // console.log('info',info)
-    }else{
-        let arr =[];
-        arr.unshift(val);
-        // console.log('else',arr)
-        await AsyncStorage.setItem('delete', JSON.stringify(arr));
+      let array = [...obj];
+
+      array.unshift(val);
+      const info = JSON.stringify(array);
+
+      await AsyncStorage.setItem('delete', info);
+      // console.log('info',info)
+    } else {
+      let arr = [];
+      arr.unshift(val);
+      // console.log('else',arr)
+      await AsyncStorage.setItem('delete', JSON.stringify(arr));
     }
-      // console.log('hlo',del)
-      // await AsyncStorage.setItem('delete', JSON.stringify(val));
- 
+    // console.log('hlo',del)
+    // await AsyncStorage.setItem('delete', JSON.stringify(val));
 
     setdata(arr);
     await AsyncStorage.setItem('notes', JSON.stringify(arr));
-   
   };
 
-  const render = ({item,index}) => {
-   
+  const render = ({item, index}) => {
     return (
       <View
         style={{
@@ -84,7 +78,7 @@ const Notes = ({navigation, route}) => {
             // alignSelf:'center'
           }}>
           <AntDesign
-            onPress={() => Updatenote(item,index)}
+            onPress={() => Updatenote(item, index)}
             name="edit"
             size={25}
             color={Theme.Orange}
@@ -100,19 +94,19 @@ const Notes = ({navigation, route}) => {
     );
   };
 
-  const Updatenote = (item,index) => {
+  const Updatenote = (item, index) => {
     // console.log('first',index)
     setind(index);
     setupto(item);
     setModalVisible(true);
   };
-//update
+  //update
   const Updatebtn = async upto => {
-      let newarr =[...data]
-      newarr[ind]=upto;
-      //  data[ind] = upto;
+    let newarr = [...data];
+    newarr[ind] = upto;
+    //  data[ind] = upto;
     setdata(newarr);
-       
+
     await AsyncStorage.setItem('notes', JSON.stringify(newarr));
     setModalVisible(false);
   };
@@ -142,7 +136,12 @@ const Notes = ({navigation, route}) => {
         <Text style={{fontSize: 25, fontWeight: 'bold', color: Theme.Orange}}>
           Notes
         </Text>
-        <FontAwesome onPress={() => navigation.navigate('Recentdelscr')} name="history" size={25} color={Theme.Orange} />
+        <FontAwesome
+          onPress={() => navigation.navigate('Recentdelscr')}
+          name="history"
+          size={25}
+          color={Theme.Orange}
+        />
       </View>
       <View style={styles.vew}>
         <Icon name="search" size={25} color={Theme.Black} />
@@ -242,7 +241,6 @@ const Notes = ({navigation, route}) => {
           </View>
         </View>
       </Modal>
-    
     </View>
   );
 };

@@ -16,37 +16,34 @@ const Addnote = ({navigation}) => {
   const [note, setnote] = useState('');
 
   const add = async () => {
-
     const value = await AsyncStorage.getItem('notes');
     const obj = JSON.parse(value);
 
-    if(obj?.length){
-// console.log('if')
-    
+    if (obj?.length) {
+      console.log('if');
 
+      let array = [...obj];
 
-     let array = [...obj]
-
-    if (!title) {
-        alert('Please Add your Title') ;  
-      } else if(!note){
-         alert('Please Add your Note');
-      } else{
-        let data ={title,note}
+      if (!title) {
+        alert('Please Add your Title');
+      } else if (!note) {
+        alert('Please Add your Note');
+      } else {
+        let data = {title, note};
         array.unshift(data);
-        const info= JSON.stringify(array)
+        const info = JSON.stringify(array);
 
-        await AsyncStorage.setItem('notes',info );
+        await AsyncStorage.setItem('notes', info);
         // console.log('info',info)
-        navigation.navigate('Notes')
+        navigation.navigate('Notes');
       }
-    }else{
-        let data ={title,note}
-        let arr =[];
-        arr.unshift(data);
-        // console.log('else',arr)
-        await AsyncStorage.setItem('notes', JSON.stringify(arr));
-        navigation.navigate('Notes')
+    } else {
+      let data = {title, note};
+      let arr = [];
+      arr.unshift(data);
+      // console.log('else',arr)
+      await AsyncStorage.setItem('notes', JSON.stringify(arr));
+      navigation.navigate('Notes');
     }
   };
   return (
@@ -60,7 +57,7 @@ const Addnote = ({navigation}) => {
         />
         <View style={{paddingVertical: 10}}>
           <TextInput
-            style={{...styles.form,fontWeight:'bold'}}
+            style={{...styles.form, fontWeight: 'bold'}}
             placeholder="Title"
             value={title}
             onChangeText={text => settitle(text)}></TextInput>
@@ -69,12 +66,11 @@ const Addnote = ({navigation}) => {
             placeholder="Note"
             multiline={true}
             value={note}
-            onChangeText={text => setnote(text)}
-            ></TextInput>
+            onChangeText={text => setnote(text)}></TextInput>
         </View>
       </View>
       <TouchableOpacity
-      onPress={add}
+        onPress={add}
         style={{
           width: '95%',
           backgroundColor: Theme.Orange,
@@ -107,6 +103,5 @@ const styles = StyleSheet.create({
     marginBottom: '3%',
     borderRadius: 10,
     fontSize: 16,
-  
   },
 });
