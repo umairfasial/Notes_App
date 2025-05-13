@@ -4,7 +4,9 @@ import React from 'react';
 const Extra = () => {
   return (
     <View>
-      <Text>Extra</Text>
+      <Text>Extra text here</Text>
+      <Text>Extra text here</Text>
+      <Text>Extra text here</Text>
     </View>
   );
 };
