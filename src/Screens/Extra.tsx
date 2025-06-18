@@ -23,6 +23,12 @@ const Extra = () => {
       <Text>Extra text here</Text>
       <Text>Extra text here</Text>
       <Text>Extra text here</Text>
+      <Text>Extra text here</Text>
+      <Text>Extra text here</Text>
+      <Text>Extra text here</Text>
+      <Text>Extra text here</Text>
+      <Text>Extra text here</Text>
+      <Text>Extra text here</Text>
     </View>
   );
 };
